@@ -1,10 +1,13 @@
-# NEREON Website — Shared Hosting (cPanel / Apache) SPA Configuration
+# NEREON Website — Shared Hosting SPA Configuration
+# Works with: Plesk (Apache), cPanel (Apache), and any Apache-based host.
 #
 # This file handles the React Router "single page app" redirect rule.
 # Without it, direct URL access (e.g. yourdomain.com/services) returns a 404.
 #
 # DEPLOY THIS FILE:
-#   Place this .htaccess file in the root of your public_html folder on your server.
+#   Place this .htaccess file in the root of your web directory on the server.
+#   • Plesk  → upload to /httpdocs/
+#   • cPanel → upload to /public_html/
 #   The GitHub Actions FTP deploy will upload it automatically from the dist/ folder.
 #
 # If you are on Nginx instead of Apache, use this config block instead:

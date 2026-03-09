@@ -3,17 +3,23 @@
 # Triggers on every push to the `main` branch.
 #
 # CHOOSE YOUR DEPLOYMENT TARGET:
-#   Option A → FTP / cPanel Shared Hosting  (uncomment the FTP job)
-#   Option B → GitHub Pages                 (uncomment the Pages job)
-#   Option C → Netlify                      (uncomment the Netlify job)
+#   Option A → FTP / Plesk / cPanel Shared Hosting  (activate the FTP job below)
+#   Option B → GitHub Pages                          (activate the Pages job below)
+#   Option C → Netlify                               (activate the Netlify job below)
 #
 # REQUIRED GITHUB SECRETS  (Settings → Secrets → Actions → New repository secret)
 #
-#   For Option A (FTP / cPanel):
-#     FTP_HOST       → Your hosting server hostname  e.g. ftp.yourdomain.com
-#     FTP_USERNAME   → Your FTP/cPanel username
-#     FTP_PASSWORD   → Your FTP/cPanel password
-#     FTP_SERVER_DIR → Remote path to deploy to      e.g. /public_html or /public_html/nereon
+#   For Option A — FTP (Plesk / cPanel / any shared hosting):
+#     FTP_HOST       → Your server hostname, e.g. ftp.yourdomain.com
+#                      (Plesk: find it in Plesk → Websites & Domains → FTP Access)
+#     FTP_USERNAME   → Your FTP username
+#                      (Plesk: the username shown under FTP Access, or your Plesk system user)
+#     FTP_PASSWORD   → Your FTP password
+#                      (Plesk: the password you set when activating hosting — no need to create
+#                       a new FTP account, the default one works fine)
+#     FTP_SERVER_DIR → Remote directory to deploy to
+#                      • Plesk  → /httpdocs          (or /httpdocs/subdirectory)
+#                      • cPanel → /public_html       (or /public_html/subdirectory)
 #
 #   For Option B (GitHub Pages):
 #     No secrets needed — just enable Pages in repo Settings → Pages
@@ -60,7 +66,7 @@ jobs:
           path: dist/
           retention-days: 1
 
-  # ── OPTION A: Deploy via FTP to cPanel / Shared Hosting ─────────────────────
+  # ── OPTION A: Deploy via FTP to Plesk / cPanel / Shared Hosting ────────────
   deploy-ftp:
     name: Deploy via FTP
     needs: build
@@ -83,6 +89,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: dist/
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          # Plesk default → /httpdocs   |   cPanel default → /public_html
           # Deletes remote files not in local build (keeps server clean)
           dangerous-clean-slate: false
           # Exclude system files
