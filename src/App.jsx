@@ -9,7 +9,7 @@ import Contact from './pages/Contact'
 function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col" style={{backgroundColor: '#0F172A', color: '#FFFFFF'}}>
+      <div className="min-h-screen flex flex-col" style={{backgroundColor: '#080810', color: '#FFFFFF'}}>
         <Navbar />
         <main className="flex-1">
           <Routes>

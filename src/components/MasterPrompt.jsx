@@ -1,124 +1,136 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 const quickActions = [
-  {
-    label: '🚀 Explore Services',
-    response: "NEREON offers three core service pillars:\n\n• **IT Advisory** — Digital transformation strategy, tech consulting, and enterprise architecture.\n• **Web Development** — Custom web apps, business websites, and serious games built with modern frameworks.\n• **Gaming Studio** — Original game titles and Web3 gaming experiences (coming soon!).\n\nWould you like to learn more about any specific service?",
-    route: '/services'
-  },
-  {
-    label: '🎮 Browse Games',
-    response: "NEREON Gaming Studio is building the next generation of interactive experiences!\n\n• Immersive serious games for training and education\n• Original indie titles with unique gameplay mechanics\n• Web3 blockchain gaming — wallet integration coming soon!\n\nHead to our Games page to see what's in development.",
-    route: '/games'
-  },
-  {
-    label: '💼 Get a Consultation',
-    response: "Ready to transform your digital strategy? Our consultants specialize in:\n\n• Digital transformation roadmaps\n• Technology stack assessment\n• Product development strategy\n• IT infrastructure optimization\n\nSchedule a free 30-minute discovery call — no commitment required!",
-    route: '/contact'
-  },
-  {
-    label: '📋 Submit a Project Brief',
-    response: "Let's build something amazing together! To get started:\n\n1. Head to our Contact page\n2. Fill out the Project Brief form\n3. Include your vision, timeline, and budget range\n4. Our team will respond within 24 hours\n\nWe work with startups, enterprises, and everything in between.",
-    route: '/contact'
-  },
+  { id: 'services', label: '🧠 Explore Services', response: "NEREON offers three core services:\n\n**IT Advisory** — Strategic technology consulting, digital transformation, cloud migration, and enterprise architecture.\n\n**Web & App Development** — Custom web apps, SaaS platforms, business websites, and API integrations using modern frameworks.\n\n**Gaming Studio** — Original game titles, serious games for enterprise training, and upcoming Web3 gaming experiences.\n\nWhich area would you like to learn more about?" },
+  { id: 'games', label: '🎮 Browse Games', response: "NEREON Gaming Studio is building the next generation of gaming:\n\n🔐 **NeonVault** — Cyberpunk puzzle game (Coming Soon)\n⛓️ **ChainRealms** — Web3 RPG with true asset ownership (Coming Soon)\n🏢 **SimCorp Academy** — Enterprise training simulation (Available)\n👾 **PixelWars** — Retro arcade shooter (Coming Soon)\n\n**Web3 features** with wallet integration are in active development. Want to be notified at launch?" },
+  { id: 'consult', label: '📞 Get a Consultation', response: "Let's connect you with a NEREON consultant!\n\nOur advisory team can help with:\n✓ Technology strategy & roadmap\n✓ Digital transformation planning\n✓ Custom software requirements\n✓ Game development briefs\n\nHead to our **Contact page** to book a free 30-minute discovery call — or type your question below and we'll get back to you within 24 hours." },
+  { id: 'brief', label: '📋 Submit a Brief', response: "Ready to start your project? Great!\n\nTo give you the best proposal, we'll need:\n📌 Project type (Web app / Website / Game / IT Advisory)\n📌 Timeline & budget range\n📌 Key requirements or challenges\n📌 Your industry / company size\n\nVisit our **Contact page** to submit a full project brief, or describe your project below and we'll follow up within 24 hours." },
 ]
 
 export default function MasterPrompt() {
-  const [messages, setMessages] = useState([])
+  const [messages, setMessages] = useState([
+    { role: 'nereon', text: "Hello! I'm NEREON's virtual assistant. How can I help you today?\n\nClick a quick action or type your own question below." }
+  ])
   const [input, setInput] = useState('')
-  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
 
-  function handleQuickAction(action) {
-    setMessages(prev => [
-      ...prev,
-      { type: 'user', text: action.label },
-      { type: 'bot', text: action.response, route: action.route },
-    ])
+  const addMessage = (role, text) => {
+    setMessages(prev => [...prev, { role, text }])
   }
 
-  function handleSubmit(e) {
+  const handleQuick = (action) => {
+    addMessage('user', action.label)
+    setLoading(true)
+    setTimeout(() => {
+      addMessage('nereon', action.response)
+      setLoading(false)
+    }, 600)
+  }
+
+  const handleSubmit = (e) => {
     e.preventDefault()
     if (!input.trim()) return
-    setMessages(prev => [
-      ...prev,
-      { type: 'user', text: input },
-      { type: 'bot', text: "Thank you for reaching out! 🎉 Our team will review your inquiry and get back to you within 24 hours. In the meantime, feel free to explore our services or browse our games portfolio." },
-    ])
+    const userMsg = input.trim()
+    addMessage('user', userMsg)
     setInput('')
+    setLoading(true)
+    setTimeout(() => {
+      addMessage('nereon', `Thanks for reaching out! 🙏\n\nYour message has been noted: "${userMsg}"\n\nA NEREON specialist will get back to you within 24 hours. In the meantime, feel free to explore our **Services** or **Games** pages!`)
+      setLoading(false)
+    }, 800)
   }
 
   return (
-    <div className="rounded-2xl overflow-hidden" style={{background: 'linear-gradient(135deg, rgba(124,58,237,0.1), rgba(16,185,129,0.05))', border: '1px solid rgba(124,58,237,0.3)'}}>
-      <div className="p-6 border-b" style={{borderColor: 'rgba(124,58,237,0.2)', background: 'rgba(15,23,42,0.8)'}}>
+    <div
+      className="rounded-2xl overflow-hidden"
+      style={{
+        background: 'rgba(255,255,255,0.02)',
+        border: '1px solid rgba(123,47,190,0.2)',
+        boxShadow: '0 0 60px rgba(123,47,190,0.08)',
+      }}
+    >
+      {/* Header */}
+      <div
+        className="flex items-center justify-between px-6 py-4"
+        style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', background: 'rgba(123,47,190,0.06)' }}
+      >
         <div className="flex items-center space-x-3">
-          <div className="w-3 h-3 rounded-full animate-pulse" style={{backgroundColor: '#10B981'}}></div>
-          <h3 className="text-lg font-bold text-white">How can NEREON help you today?</h3>
+          <div
+            className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm font-bold"
+            style={{ background: 'linear-gradient(135deg, #7B2FBE, #00D2FF)' }}
+          >
+            N
+          </div>
+          <div>
+            <div className="text-white text-sm font-semibold">NEREON Assistant</div>
+            <div className="flex items-center space-x-1.5">
+              <span className="dot-live" style={{ width: '6px', height: '6px' }} />
+              <span className="text-xs text-gray-500">Online</span>
+            </div>
+          </div>
         </div>
-        <p className="text-gray-400 text-sm mt-1">Choose a quick action or type your own question below</p>
       </div>
 
-      {/* Quick action buttons */}
-      <div className="p-4 grid grid-cols-2 gap-2" style={{backgroundColor: 'rgba(15,23,42,0.6)'}}>
-        {quickActions.map((action) => (
+      {/* Messages */}
+      <div className="h-72 overflow-y-auto p-6 space-y-4" id="chat-messages">
+        {messages.map((msg, i) => (
+          <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+            <div
+              className="max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed whitespace-pre-line"
+              style={msg.role === 'user'
+                ? { background: 'linear-gradient(135deg, #7B2FBE, #5B21B6)', color: 'white', borderBottomRightRadius: '4px' }
+                : { background: 'rgba(255,255,255,0.05)', color: '#D1D5DB', border: '1px solid rgba(255,255,255,0.06)', borderBottomLeftRadius: '4px' }
+              }
+            >
+              {msg.text}
+            </div>
+          </div>
+        ))}
+        {loading && (
+          <div className="flex justify-start">
+            <div className="px-4 py-3 rounded-2xl" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.06)' }}>
+              <div className="flex space-x-1">
+                {[0, 1, 2].map(i => (
+                  <div key={i} className="w-2 h-2 rounded-full animate-bounce" style={{ backgroundColor: '#7B2FBE', animationDelay: `${i * 0.15}s` }} />
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Quick actions */}
+      <div className="px-6 pb-4 flex flex-wrap gap-2">
+        {quickActions.map(action => (
           <button
-            key={action.label}
-            onClick={() => handleQuickAction(action)}
-            className="text-left px-3 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white transition-all duration-200 hover:scale-[1.02]"
-            style={{backgroundColor: 'rgba(124,58,237,0.15)', border: '1px solid rgba(124,58,237,0.2)'}}
+            key={action.id}
+            onClick={() => handleQuick(action)}
+            className="text-xs px-3 py-2 rounded-full font-medium transition-all duration-200 hover:scale-105"
+            style={{ backgroundColor: 'rgba(123,47,190,0.12)', color: '#A78BFA', border: '1px solid rgba(123,47,190,0.25)' }}
           >
             {action.label}
           </button>
         ))}
       </div>
 
-      {/* Chat messages */}
-      {messages.length > 0 && (
-        <div className="px-4 py-2 max-h-64 overflow-y-auto space-y-3" style={{backgroundColor: 'rgba(15,23,42,0.6)'}}>
-          {messages.map((msg, i) => (
-            <div key={i} className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
-              {msg.type === 'bot' && (
-                <div className="w-7 h-7 rounded-full flex items-center justify-center mr-2 flex-shrink-0 text-xs font-bold" style={{background: 'linear-gradient(135deg, #7C3AED, #10B981)'}}>
-                  N
-                </div>
-              )}
-              <div
-                className="max-w-xs lg:max-w-md px-4 py-2 rounded-2xl text-sm whitespace-pre-line"
-                style={msg.type === 'user'
-                  ? {backgroundColor: '#7C3AED', color: 'white', borderBottomRightRadius: '4px'}
-                  : {backgroundColor: 'rgba(30,41,59,0.9)', color: '#E2E8F0', borderBottomLeftRadius: '4px', border: '1px solid rgba(124,58,237,0.2)'}
-                }
-              >
-                {msg.text}
-                {msg.route && (
-                  <button
-                    onClick={() => navigate(msg.route)}
-                    className="block mt-2 text-xs font-semibold underline"
-                    style={{color: '#10B981'}}
-                  >
-                    Go there →
-                  </button>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Input area */}
-      <form onSubmit={handleSubmit} className="p-4 flex space-x-2" style={{backgroundColor: 'rgba(15,23,42,0.8)', borderTop: '1px solid rgba(124,58,237,0.2)'}}>
+      {/* Input */}
+      <form onSubmit={handleSubmit} className="px-6 pb-6 flex gap-3">
         <input
           type="text"
           value={input}
           onChange={e => setInput(e.target.value)}
-          placeholder="Ask us anything about our services..."
-          className="flex-1 px-4 py-2 rounded-lg text-sm text-white placeholder-gray-500 outline-none focus:ring-2 focus:ring-[#7C3AED]"
-          style={{backgroundColor: 'rgba(30,41,59,0.8)', border: '1px solid rgba(124,58,237,0.3)'}}
+          placeholder="Ask anything about NEREON..."
+          className="flex-1 px-4 py-3 rounded-xl text-sm text-white placeholder-gray-600 outline-none transition-all"
+          style={{
+            backgroundColor: 'rgba(255,255,255,0.04)',
+            border: '1px solid rgba(255,255,255,0.08)',
+          }}
         />
         <button
           type="submit"
-          className="px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 hover:scale-[1.02]"
-          style={{background: 'linear-gradient(135deg, #7C3AED, #10B981)'}}
+          disabled={!input.trim() || loading}
+          className="px-5 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-200 hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed"
+          style={{ background: 'linear-gradient(135deg, #7B2FBE, #00D2FF)' }}
         >
           Send
         </button>

@@ -1,52 +1,85 @@
 import { NavLink } from 'react-router-dom'
 
 export default function Footer() {
+  const year = new Date().getFullYear()
+
   return (
-    <footer className="border-t" style={{backgroundColor: '#0F172A', borderColor: '#1E293B'}}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer style={{ backgroundColor: '#04040A', borderTop: '1px solid rgba(123,47,190,0.15)' }}>
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+          {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center space-x-1 mb-4">
-              <span className="text-2xl font-black" style={{color: '#7C3AED'}}>NER</span>
-              <span className="text-2xl font-black" style={{color: '#10B981'}}>EON</span>
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="w-8 h-8 rounded rotate-45" style={{ background: 'linear-gradient(135deg, #7B2FBE, #00D2FF)' }} />
+              <span className="text-xl font-black" style={{ fontFamily: 'Syne, sans-serif' }}>
+                <span className="text-white">NERE</span>
+                <span className="gradient-text">ON</span>
+              </span>
             </div>
-            <p className="text-gray-400 text-sm max-w-xs">
-              Building tomorrow's digital experiences through innovative web applications, serious games, and strategic IT advisory services.
+            <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
+              Building tomorrow's digital experiences — from enterprise IT advisory to immersive games and cutting-edge web applications.
             </p>
             <div className="flex space-x-4 mt-6">
-              {['Twitter', 'LinkedIn', 'GitHub'].map(s => (
-                <a key={s} href="#" className="text-gray-500 hover:text-white transition-colors text-sm font-medium">
-                  {s}
+              {['Twitter', 'LinkedIn', 'GitHub', 'Discord'].map(social => (
+                <a
+                  key={social}
+                  href="#"
+                  className="w-9 h-9 rounded-lg flex items-center justify-center text-gray-500 hover:text-white transition-all duration-200"
+                  style={{ border: '1px solid rgba(123,47,190,0.2)' }}
+                  aria-label={social}
+                >
+                  <span className="text-xs font-bold">{social[0]}</span>
                 </a>
               ))}
             </div>
           </div>
+
+          {/* Navigation */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Navigation</h4>
-            <ul className="space-y-2">
-              {[{to:'/', label:'Home'},{to:'/services', label:'Services'},{to:'/games', label:'Games'},{to:'/contact', label:'Contact'}].map(l => (
-                <li key={l.to}>
-                  <NavLink to={l.to} className="text-gray-400 hover:text-white text-sm transition-colors">
-                    {l.label}
+            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Navigation</h4>
+            <ul className="space-y-3">
+              {[
+                { to: '/', label: 'Home' },
+                { to: '/services', label: 'Services' },
+                { to: '/games', label: 'Games' },
+                { to: '/contact', label: 'Contact' },
+              ].map(link => (
+                <li key={link.to}>
+                  <NavLink to={link.to} className="text-gray-500 hover:text-white text-sm transition-colors duration-200">
+                    {link.label}
                   </NavLink>
                 </li>
               ))}
             </ul>
           </div>
+
+          {/* Services */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Services</h4>
-            <ul className="space-y-2 text-gray-400 text-sm">
-              <li>IT Advisory</li>
-              <li>Web Applications</li>
-              <li>Serious Games</li>
-              <li>Digital Strategy</li>
-              <li>Gaming Studio</li>
+            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Services</h4>
+            <ul className="space-y-3">
+              {['IT Advisory', 'Web Development', 'Serious Games', 'Web3 Gaming', 'Digital Strategy'].map(s => (
+                <li key={s}>
+                  <span className="text-gray-500 text-sm">{s}</span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
-        <div className="mt-12 pt-8 border-t flex flex-col md:flex-row justify-between items-center" style={{borderColor: '#1E293B'}}>
-          <p className="text-gray-500 text-sm">© {new Date().getFullYear()} NEREON. All rights reserved.</p>
-          <p className="text-gray-600 text-xs mt-2 md:mt-0">Building Tomorrow's Digital Experiences</p>
+
+        <div
+          className="flex flex-col md:flex-row items-center justify-between pt-8 gap-4"
+          style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+        >
+          <p className="text-gray-600 text-sm">© {year} NEREON. All rights reserved.</p>
+          <div className="flex items-center space-x-1 text-gray-600 text-xs">
+            <span className="dot-live mr-2" />
+            <span>Systems Operational</span>
+          </div>
+          <div className="flex space-x-6">
+            {['Privacy Policy', 'Terms of Service'].map(item => (
+              <a key={item} href="#" className="text-gray-600 hover:text-gray-400 text-xs transition-colors">{item}</a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
