@@ -71,9 +71,7 @@ jobs:
     name: Deploy via FTP
     needs: build
     runs-on: ubuntu-latest
-    # ↓ UNCOMMENT the line below to activate FTP deployment
-    # if: github.ref == 'refs/heads/main'
-    if: false # ← remove this line when activating
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Download build artifact
         uses: actions/download-artifact@v4
