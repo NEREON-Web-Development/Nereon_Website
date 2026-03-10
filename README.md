@@ -37,6 +37,19 @@ npm run preview
 npm run lint
 ```
 
+## Secure FTP Deploy Script
+
+`deploy.ps1` uses environment variables for credentials.
+
+```powershell
+$env:FTP_SERVER = "ftp://nereon.gr/httpdocs/"
+$env:FTP_USERNAME = "your_ftp_username"
+$env:FTP_PASSWORD = "your_ftp_password"
+$env:LOCAL_DIST_PATH = "C:\NBF\Nereon_Website\dist"
+
+./deploy.ps1
+```
+
 ## Project Structure
 
 ```

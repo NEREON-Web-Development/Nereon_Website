@@ -1,8 +1,22 @@
 # FTP deployment script for NEREON website
-$ftpServer = "ftp://nereon.gr/httpdocs/"
-$user = "nereo_652972"
-$pass = "zX2!b@2rq"
-$localFolder = "C:\\NBF\\Nereon_Website\\dist"
+# Required env vars: FTP_USERNAME, FTP_PASSWORD
+# Optional env vars: FTP_SERVER, LOCAL_DIST_PATH
+$ftpServer = if ($env:FTP_SERVER) { $env:FTP_SERVER } else { "ftp://nereon.gr/httpdocs/" }
+$user = $env:FTP_USERNAME
+$pass = $env:FTP_PASSWORD
+$localFolder = if ($env:LOCAL_DIST_PATH) { $env:LOCAL_DIST_PATH } else { "C:\\NBF\\Nereon_Website\\dist" }
+
+if (-not $user -or -not $pass) {
+    throw "Missing FTP credentials. Set FTP_USERNAME and FTP_PASSWORD environment variables."
+}
+
+if (-not (Test-Path $localFolder)) {
+    throw "Local build folder not found: $localFolder"
+}
+
+if (-not $ftpServer.EndsWith('/')) {
+    $ftpServer = "$ftpServer/"
+}
 
 
 # Create FTP directory function
