@@ -26,10 +26,13 @@ jobs:
       - name: Upload to FTP
         uses: SamKirkland/FTP-Deploy-Action@v4
         with:
-          server: nereon.gr
-          username: nereo_652972
-          password: zX2!b@2rq
+          # Use repository secrets for credentials.
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           port: 21
-          local-dir: dist
-          server-dir: /httpdocs
+          # Upload build artifacts directly to web root.
+          local-dir: ./dist/
+          server-dir: /httpdocs/
+          dangerous-clean-slate: true
