@@ -12,7 +12,7 @@ const serviceOptions = [
 ]
 
 const contactInfo = [
-  { icon: '📧', title: 'Email', value: 'hello@nereon.io', desc: 'We reply within 24 hours' },
+  { icon: '📧', title: 'Email', value: 'nereondev@gmail.com', desc: 'We reply within 24 hours' },
   { icon: '📅', title: 'Discovery Call', value: '30-Min Free Consultation', desc: 'No commitment required' },
   { icon: '⚡', title: 'Response Time', value: 'Under 24 Hours', desc: 'Guaranteed on business days' },
 ]
