@@ -83,6 +83,7 @@ What this does:
 - runs `npm run build`
 - copies `dist/index.html` to `public/index.html`
 - copies `dist/assets/` to `public/assets/`
+- if repository is checked out directly under `.../public`, it also publishes to parent web root as a fallback
 
 After this, `Export now` then `Development now` should serve `/assets/...` instead of `/src/main.jsx`.
 

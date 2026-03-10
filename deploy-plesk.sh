@@ -70,14 +70,24 @@ if ! "$NPM_BIN" run build; then
 	"$NPM_BIN" run build -- --emptyOutDir
 fi
 
-echo "[deploy-plesk] Publishing dist to web root: $WEB_ROOT"
-mkdir -p "$WEB_ROOT"
+PUBLISH_TARGETS=("$WEB_ROOT")
+if [ "$(basename "$ROOT_DIR")" = "public" ]; then
+	PARENT_ROOT="$(dirname "$ROOT_DIR")"
+	if [ -w "$PARENT_ROOT" ]; then
+		PUBLISH_TARGETS+=("$PARENT_ROOT")
+	fi
+fi
 
-# Clear old build artifacts to prevent stale hashed files.
-rm -f "$WEB_ROOT/index.html"
-rm -rf "$WEB_ROOT/assets"
+for target in "${PUBLISH_TARGETS[@]}"; do
+	echo "[deploy-plesk] Publishing dist to: $target"
+	mkdir -p "$target"
 
-cp -f dist/index.html "$WEB_ROOT/index.html"
-cp -R dist/assets "$WEB_ROOT/assets"
+	# Clear old build artifacts to prevent stale hashed files.
+	rm -f "$target/index.html"
+	rm -rf "$target/assets"
 
-echo "[deploy-plesk] Done. Serving built assets from: $WEB_ROOT"
+	cp -f dist/index.html "$target/index.html"
+	cp -R dist/assets "$target/assets"
+done
+
+echo "[deploy-plesk] Done. Published built assets to: ${PUBLISH_TARGETS[*]}"
