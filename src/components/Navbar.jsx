@@ -31,7 +31,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <NavLink to="/" className="flex items-center">
-            <img src={logo} alt="NEREON" className="h-10 w-auto" />
+            <img src={logo} alt="NEREON" style={{ height: '48px', width: 'auto', maxWidth: '180px', objectFit: 'contain' }} />
           </NavLink>
 
           {/* Desktop nav */}

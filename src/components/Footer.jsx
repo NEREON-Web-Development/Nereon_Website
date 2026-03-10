@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="mb-4">
-              <img src={logo} alt="NEREON" className="h-10 w-auto" />
+              <img src={logo} alt="NEREON" style={{ height: '56px', width: 'auto', maxWidth: '200px', objectFit: 'contain' }} />
             </div>
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
               Building tomorrow's digital experiences — from enterprise IT advisory to immersive games and cutting-edge web applications.
