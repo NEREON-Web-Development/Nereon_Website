@@ -50,7 +50,16 @@ echo "[deploy-plesk] Installing dependencies..."
 "$NPM_BIN" ci --omit=dev
 
 echo "[deploy-plesk] Building Vite app..."
-"$NPM_BIN" run build
+# Plesk shared hosting can have strict process/thread limits.
+# These settings reduce parallelism and avoid Rust-threadpool crashes.
+export RAYON_NUM_THREADS=1
+export UV_THREADPOOL_SIZE=1
+export TAILWIND_DISABLE_OXIDE=1
+
+if ! "$NPM_BIN" run build; then
+	echo "[deploy-plesk] First build attempt failed. Retrying with reduced Vite workload..."
+	"$NPM_BIN" run build -- --emptyOutDir
+fi
 
 echo "[deploy-plesk] Publishing dist to web root: $WEB_ROOT"
 mkdir -p "$WEB_ROOT"
