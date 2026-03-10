@@ -5,6 +5,9 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$ROOT_DIR"
 
+# Web root to serve files from (recommended: ./public in Plesk).
+WEB_ROOT="${PLESK_WEB_ROOT:-$ROOT_DIR/public}"
+
 find_npm() {
 	if command -v npm >/dev/null 2>&1; then
 		command -v npm
@@ -32,18 +35,31 @@ if [ -z "$NPM_BIN" ]; then
 	exit 1
 fi
 
+NODE_BIN_DIR="$(dirname "$NPM_BIN")"
+export PATH="$NODE_BIN_DIR:$PATH"
+
+if ! command -v node >/dev/null 2>&1; then
+	echo "[deploy-plesk] ERROR: node not found in PATH even after npm detection." >&2
+	exit 1
+fi
+
 echo "[deploy-plesk] Using npm: $NPM_BIN"
+echo "[deploy-plesk] Using node: $(command -v node)"
 
 echo "[deploy-plesk] Installing dependencies..."
-"$NPM_BIN" ci
+"$NPM_BIN" ci --omit=dev
 
 echo "[deploy-plesk] Building Vite app..."
 "$NPM_BIN" run build
 
-echo "[deploy-plesk] Publishing dist to web root..."
-rm -f index.html
-cp -f dist/index.html ./index.html
-rm -rf assets
-cp -R dist/assets ./assets
+echo "[deploy-plesk] Publishing dist to web root: $WEB_ROOT"
+mkdir -p "$WEB_ROOT"
 
-echo "[deploy-plesk] Done. Serving built assets from web root."
+# Clear old build artifacts to prevent stale hashed files.
+rm -f "$WEB_ROOT/index.html"
+rm -rf "$WEB_ROOT/assets"
+
+cp -f dist/index.html "$WEB_ROOT/index.html"
+cp -R dist/assets "$WEB_ROOT/assets"
+
+echo "[deploy-plesk] Done. Serving built assets from: $WEB_ROOT"
