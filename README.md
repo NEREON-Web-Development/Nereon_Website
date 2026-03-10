@@ -61,6 +61,25 @@ $env:LOCAL_DIST_PATH = "C:\NBF\Nereon_Website\dist"
 ./deploy.ps1
 ```
 
+## Plesk Git Deploy (Export + Development)
+
+If you deploy with Plesk Git directly to `httpdocs`, source files are copied first and the site will break unless you build and publish `dist`.
+
+In Plesk repository settings, set the deployment action to:
+
+```bash
+bash ./deploy-plesk.sh
+```
+
+What this does:
+
+- runs `npm ci`
+- runs `npm run build`
+- copies `dist/index.html` to web root `index.html`
+- copies `dist/assets/` to web root `assets/`
+
+After this, `Export now` then `Development now` should serve `/assets/...` instead of `/src/main.jsx`.
+
 ## Project Structure
 
 ```
