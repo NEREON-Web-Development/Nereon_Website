@@ -37,16 +37,27 @@ npm run preview
 npm run lint
 ```
 
-## Secure FTP Deploy Script
+## Deployment (GitHub Secrets)
 
-`deploy.ps1` uses environment variables for credentials.
+Use GitHub Actions with encrypted repository secrets as the primary deployment path.
+
+Required repository secrets:
+
+- `FTP_SERVER` (example: `nereon.gr`)
+- `FTP_USERNAME`
+- `FTP_PASSWORD`
+
+Workflow file: `.github/workflows/deploy.yml`
+
+This workflow builds with Vite and uploads `./dist/` directly to `/httpdocs/`.
+
+Local fallback (`deploy.ps1`) still supports environment variables if needed:
 
 ```powershell
 $env:FTP_SERVER = "ftp://nereon.gr/httpdocs/"
 $env:FTP_USERNAME = "your_ftp_username"
 $env:FTP_PASSWORD = "your_ftp_password"
 $env:LOCAL_DIST_PATH = "C:\NBF\Nereon_Website\dist"
-
 ./deploy.ps1
 ```
 
