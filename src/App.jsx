@@ -5,6 +5,9 @@ import Home from './pages/Home'
 import Services from './pages/Services'
 import Games from './pages/Games'
 import Contact from './pages/Contact'
+import CookieConsent from './components/CookieConsent';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import ThankYou from './pages/ThankYou';
 
 function App() {
   return (
@@ -17,8 +20,11 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/games" element={<Games />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/thank-you" element={<ThankYou />} />
           </Routes>
         </main>
+        <CookieConsent />
         <Footer />
       </div>
     </Router>

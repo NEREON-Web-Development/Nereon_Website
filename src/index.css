@@ -140,3 +140,52 @@ body {
   margin-right: 12px;
 }
 
+.cookie-consent-popup {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a2e;
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  padding: 24px 32px;
+  z-index: 1000;
+  max-width: 90vw;
+}
+
+.cookie-consent-content h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.cookie-consent-content p {
+  margin-bottom: 16px;
+}
+
+.cookie-consent-content button {
+  margin-right: 12px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  background: #7B2FBE;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cookie-consent-content button:last-child {
+  background: #444;
+}
+
+.cookie-consent-content button:hover {
+  background: #00D2FF;
+  color: #080810;
+}
+
+.cookie-consent-content a {
+  color: #00D2FF;
+  text-decoration: underline;
+}
+

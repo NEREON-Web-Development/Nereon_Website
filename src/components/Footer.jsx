@@ -73,9 +73,8 @@ export default function Footer() {
             <span>Systems Operational</span>
           </div>
           <div className="flex space-x-6">
-            {['Privacy Policy', 'Terms of Service'].map(item => (
-              <a key={item} href="#" className="text-gray-600 hover:text-gray-400 text-xs transition-colors">{item}</a>
-            ))}
+            <NavLink to="/privacy" className="text-gray-600 hover:text-gray-400 text-xs transition-colors">Privacy Policy</NavLink>
+            <a href="#" className="text-gray-600 hover:text-gray-400 text-xs transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>

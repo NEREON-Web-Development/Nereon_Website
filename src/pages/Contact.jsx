@@ -180,7 +180,8 @@ export default function Contact() {
               </div>
             ) : (
               <form
-                onSubmit={handleSubmit}
+                action="https://formspree.io/f/xlgpjdky"
+                method="POST"
                 className="p-8 rounded-2xl space-y-5"
                 style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(123,47,190,0.15)' }}
                 noValidate
@@ -265,6 +266,10 @@ export default function Contact() {
                   />
                   {errors.message && <p className="text-red-400 text-xs mt-1.5">{errors.message}</p>}
                 </div>
+
+                <input type="hidden" name="_replyto" value={form.email} />
+                <input type="hidden" name="_subject" value={`Contact from ${form.name}`} />
+                <input type="hidden" name="_redirect" value="/thank-you" />
 
                 <button
                   type="submit"
