@@ -37,4 +37,5 @@ jobs:
           # Upload build artifacts directly to web root.
           local-dir: ./dist/
           server-dir: /httpdocs/public/
-          dangerous-clean-slate: true
+          # Incremental sync is more compatible with Plesk FTP than clean-slate mode.
+          dangerous-clean-slate: false
