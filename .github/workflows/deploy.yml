@@ -36,5 +36,5 @@ jobs:
           port: 21
           # Upload build artifacts directly to web root.
           local-dir: ./dist/
-          server-dir: /httpdocs/
+          server-dir: /httpdocs/public/
           dangerous-clean-slate: true
