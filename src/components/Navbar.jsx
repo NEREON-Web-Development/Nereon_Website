@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
+import logo from '../assets/logo.png'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -29,15 +30,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <NavLink to="/" className="flex items-center space-x-3">
-            <div
-              className="w-8 h-8 rounded rotate-45 flex-shrink-0"
-              style={{ background: 'linear-gradient(135deg, #7B2FBE, #00D2FF)' }}
-            />
-            <span className="text-xl font-black tracking-tight" style={{ fontFamily: 'Syne, sans-serif' }}>
-              <span className="text-white">NERE</span>
-              <span className="gradient-text">ON</span>
-            </span>
+          <NavLink to="/" className="flex items-center">
+            <img src={logo} alt="NEREON" className="h-10 w-auto" />
           </NavLink>
 
           {/* Desktop nav */}

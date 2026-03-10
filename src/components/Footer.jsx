@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import logo from '../assets/logo.png'
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -9,12 +10,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-8 h-8 rounded rotate-45" style={{ background: 'linear-gradient(135deg, #7B2FBE, #00D2FF)' }} />
-              <span className="text-xl font-black" style={{ fontFamily: 'Syne, sans-serif' }}>
-                <span className="text-white">NERE</span>
-                <span className="gradient-text">ON</span>
-              </span>
+            <div className="mb-4">
+              <img src={logo} alt="NEREON" className="h-10 w-auto" />
             </div>
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
               Building tomorrow's digital experiences — from enterprise IT advisory to immersive games and cutting-edge web applications.
