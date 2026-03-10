@@ -5,8 +5,17 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$ROOT_DIR"
 
-# Web root to serve files from (recommended: ./public in Plesk).
-WEB_ROOT="${PLESK_WEB_ROOT:-$ROOT_DIR/public}"
+# Web root resolution:
+# - If PLESK_WEB_ROOT is provided, use it.
+# - If repo is already deployed into a public directory, publish in-place.
+# - Otherwise publish into ./public.
+if [ -n "${PLESK_WEB_ROOT:-}" ]; then
+	WEB_ROOT="$PLESK_WEB_ROOT"
+elif [ "$(basename "$ROOT_DIR")" = "public" ]; then
+	WEB_ROOT="$ROOT_DIR"
+else
+	WEB_ROOT="$ROOT_DIR/public"
+fi
 
 find_npm() {
 	if command -v npm >/dev/null 2>&1; then
