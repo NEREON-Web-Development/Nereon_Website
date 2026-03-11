@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import logo from '../assets/logo.png'
+import logo from '../assets/logo-new.png'
 
 export default function Footer() {
   const year = new Date().getFullYear()
