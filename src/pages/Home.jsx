@@ -1,13 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import MasterPrompt from '../components/MasterPrompt'
 
-const stats = [
-  { value: '50+', label: 'Projects Delivered' },
-  { value: '30+', label: 'Enterprise Clients' },
-  { value: '6', label: 'Games in Pipeline' },
-  { value: '24h', label: 'Avg. Response Time' },
-]
-
 const services = [
   {
     number: '01',
@@ -113,18 +106,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── STATS ──────────────────────────────────────── */}
-      <section style={{ backgroundColor: '#0C0C14', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-        <div className="max-w-5xl mx-auto px-6 py-14 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {stats.map(s => (
-            <div key={s.label}>
-              <div className="text-4xl md:text-5xl font-black mb-1 gradient-text" style={{ fontFamily: 'Syne, sans-serif' }}>{s.value}</div>
-              <div className="text-gray-500 text-sm">{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ── SERVICES ───────────────────────────────────── */}
       <section className="py-28 px-6">
         <div className="max-w-7xl mx-auto">
@@ -182,56 +163,14 @@ export default function Home() {
       </section>
 
       {/* ── FEATURED WORK ──────────────────────────────── */}
-      <section className="py-28 px-6" style={{ backgroundColor: '#0C0C14' }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-end justify-between mb-16">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#00D2FF' }}>Case Studies</p>
-              <h2 className="text-4xl md:text-5xl font-black text-white" style={{ fontFamily: 'Syne, sans-serif' }}>
-                Featured Work
-              </h2>
-            </div>
-            <NavLink to="/services" className="hidden md:block btn-outline text-sm" style={{ padding: '10px 24px' }}>
-              View All →
-            </NavLink>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {projects.map(p => (
-              <div
-                key={p.title}
-                className="group relative p-8 rounded-2xl overflow-hidden card-hover"
-                style={{ background: `linear-gradient(135deg, rgba(8,8,16,0.95), ${p.color}08)`, border: `1px solid ${p.color}20` }}
-              >
-                <div className="absolute top-0 left-0 right-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${p.color}, transparent)` }} />
-                <span
-                  className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4"
-                  style={{ backgroundColor: `${p.color}18`, color: p.color }}
-                >
-                  {p.tag}
-                </span>
-                <h3 className="text-xl font-bold text-white mb-3" style={{ fontFamily: 'Syne, sans-serif' }}>{p.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed mb-6">{p.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {p.stats.map(stat => (
-                    <span key={stat} className="text-xs px-2 py-1 rounded-lg font-medium text-gray-400" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
-                      {stat}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      {/* Section hidden for now as requested */}
       {/* ── PARTNERS MARQUEE ───────────────────────────── */}
       <section
         className="py-14 overflow-hidden"
         style={{ backgroundColor: '#080810', borderTop: '1px solid rgba(255,255,255,0.04)', borderBottom: '1px solid rgba(255,255,255,0.04)' }}
       >
         <div className="mb-6 text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-gray-600">Trusted by leading companies</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-gray-600">Companies that we work with as Nereon</p>
         </div>
         <div className="overflow-hidden">
           <div className="animate-marquee">
