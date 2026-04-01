@@ -12,8 +12,8 @@ const services = [
   {
     number: '02',
     title: 'Web & App Development',
-    description: 'From concept to production — we build high-performance web applications, business websites, and SaaS platforms using modern frameworks and best practices.',
-    tags: ['React / Vue', 'Node.js', 'Full-Stack', 'API Design'],
+    description: 'From concept to production — we build high-performance web applications, business websites, and SaaS platforms using modern frameworks. See it in action: nereon.gr (our own site) and degentradingbot.tech (AI automation).',
+    tags: ['React / Vue', 'Node.js', 'Full-Stack', 'AI Automation'],
     accent: '#00D2FF',
   },
   {
@@ -27,25 +27,28 @@ const services = [
 
 const projects = [
   {
-    tag: 'IT Advisory',
-    title: 'FinTech Digital Overhaul',
-    description: 'Led a complete infrastructure modernization for a leading fintech, reducing OpEx by 40% while tripling performance.',
-    color: '#7B2FBE',
-    stats: ['40% Cost Reduction', '3× Performance', '6 Months'],
+    tag: 'Web Development',
+    title: 'NEREON — nereon.gr',
+    description: 'NEREON\'s own platform, built in-house — a custom React/Vite SPA showcasing our web development capabilities. See it live.',
+    color: '#00D2FF',
+    stats: ['React + Vite', 'Custom Design', 'Live'],
+    link: 'https://nereon.gr',
   },
   {
-    tag: 'Web Development',
-    title: 'Enterprise SaaS Platform',
-    description: 'Built a multi-tenant SaaS platform from MVP to 10K+ active users in under 12 months.',
-    color: '#00D2FF',
-    stats: ['10K+ Users', '99.9% Uptime', 'Full-Stack'],
+    tag: 'AI Automation',
+    title: 'DegenTradingBot',
+    description: 'A 24/7 self-learning, self-executing trading bot — autonomous AI automation built and operated by NEREON.',
+    color: '#7B2FBE',
+    stats: ['Autonomous 24/7', 'Self-Learning AI', 'Live'],
+    link: 'https://degentradingbot.tech',
   },
   {
     tag: 'Serious Game',
     title: 'Corporate Training Sim',
-    description: 'Immersive browser-based simulation for Fortune 500 compliance training — 85% engagement rate.',
+    description: 'Immersive browser-based simulation for enterprise compliance and crisis management training — currently in development.',
     color: '#FF6B35',
-    stats: ['85% Engagement', '5K+ Completions', 'Multi-Language'],
+    stats: ['Coming Soon', 'Browser-Based', 'Enterprise'],
+    link: null,
   },
 ]
 

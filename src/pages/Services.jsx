@@ -68,25 +68,31 @@ const serviceDetails = [
 
 const caseStudies = [
   {
-    tag: 'IT Advisory',
-    title: 'FinTech Digital Overhaul',
-    description: 'Led a complete infrastructure modernization for a leading fintech company, migrating legacy systems to cloud-native architecture. Result: 40% reduction in operational costs and 3× improvement in system throughput.',
-    metrics: ['40% Cost Reduction', '3× Performance', '6 Month Timeline'],
-    color: '#7B2FBE',
+    tag: 'Web Development',
+    title: 'NEREON — Our Own Platform',
+    description: 'Built NEREON\'s own consulting website from scratch — a fully custom React/Vite SPA with a dark aesthetic, animated components, and Tailwind CSS. This site is a live demonstration of what we deliver for clients.',
+    metrics: ['React + Vite', 'Custom Design', 'Live Project'],
+    color: '#00D2FF',
+    link: 'https://nereon.gr',
+    linkLabel: 'Visit nereon.gr →',
   },
   {
-    tag: 'Web Development',
-    title: 'Enterprise SaaS Platform',
-    description: 'Designed and built a scalable multi-tenant SaaS platform for an HR tech startup — from MVP to 10,000+ active users in under 12 months with 99.9% uptime maintained throughout.',
-    metrics: ['10K+ Users', '99.9% Uptime', 'Full-Stack Delivery'],
-    color: '#00D2FF',
+    tag: 'AI Automation',
+    title: 'DegenTradingBot',
+    description: 'A 24/7 automated, self-learning, self-executing trading bot designed and built by NEREON. It continuously monitors markets, adapts its strategies, and executes trades autonomously — zero human intervention required.',
+    metrics: ['24/7 Autonomous', 'Self-Learning AI', 'Live Platform'],
+    color: '#7B2FBE',
+    link: 'https://degentradingbot.tech',
+    linkLabel: 'Visit degentradingbot.tech →',
   },
   {
     tag: 'Serious Game',
     title: 'Corporate Training Simulation',
-    description: 'Developed an immersive browser-based simulation for a Fortune 500 company to train staff in compliance and crisis management — achieving an 85% completion and engagement rate.',
-    metrics: ['85% Engagement', '5K+ Completions', 'Multi-Language'],
+    description: 'An immersive browser-based simulation for enterprise compliance and crisis management training. Built for measurable workforce outcomes — currently in active development.',
+    metrics: ['In Development', 'Coming Soon', 'Browser-Based'],
     color: '#FF6B35',
+    link: null,
+    linkLabel: null,
   },
 ]
 
@@ -235,13 +241,24 @@ export default function Services() {
                 </span>
                 <h3 className="text-lg font-bold text-white mb-3" style={{ fontFamily: 'Syne, sans-serif' }}>{cs.title}</h3>
                 <p className="text-gray-400 text-sm flex-1 mb-6 leading-relaxed">{cs.description}</p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {cs.metrics.map(m => (
                     <span key={m} className="text-xs px-3 py-1 rounded-lg font-medium text-gray-400" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
                       {m}
                     </span>
                   ))}
                 </div>
+                {cs.link && (
+                  <a
+                    href={cs.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-semibold transition-colors duration-200 hover:opacity-80"
+                    style={{ color: cs.color }}
+                  >
+                    {cs.linkLabel}
+                  </a>
+                )}
               </div>
             ))}
           </div>
