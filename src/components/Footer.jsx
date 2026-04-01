@@ -41,7 +41,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Services</h4>
             <ul className="space-y-3">
-              {['IT Advisory', 'Web Development', 'Serious Games', 'Web3 Gaming', 'Digital Strategy'].map(s => (
+              {['IT Advisory', 'Web Development', 'Agentic Automation', 'Serious Games', 'Web3 Gaming'].map(s => (
                 <li key={s}>
                   <span className="text-gray-500 text-sm">{s}</span>
                 </li>

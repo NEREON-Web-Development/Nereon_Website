@@ -23,6 +23,13 @@ const services = [
     tags: ['Original IP', 'Serious Games', 'Web3 Gaming', 'Simulations'],
     accent: '#FF6B35',
   },
+  {
+    number: '04',
+    title: 'Agentic Automation',
+    description: 'AI-powered autonomous agents that work for your business 24/7 — from self-executing trading bots to intelligent workflow automation. Real example: degentradingbot.tech.',
+    tags: ['AI Agents', 'Workflow Automation', 'LLM Integration', 'Autonomous Systems'],
+    accent: '#22C55E',
+  },
 ]
 
 const projects = [
@@ -116,7 +123,7 @@ export default function Home() {
             <div className="section-divider" style={{ margin: '0 0 16px' }} />
             <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#7B2FBE' }}>What We Do</p>
             <h2 className="text-4xl md:text-5xl font-black text-white" style={{ fontFamily: 'Syne, sans-serif' }}>
-              Three Capabilities.<br />One Visionary Team.
+              Four Capabilities.<br />One Visionary Team.
             </h2>
           </div>
 

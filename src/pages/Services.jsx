@@ -64,6 +64,27 @@ const serviceDetails = [
       'Live ops and ongoing content updates',
     ],
   },
+  {
+    id: 'agentic',
+    label: 'Agentic Automation',
+    accent: '#22C55E',
+    headline: 'Autonomous AI Agents That Work While You Sleep',
+    description: 'NEREON designs and deploys intelligent autonomous agents that handle complex business workflows end-to-end — self-learning, self-executing systems that eliminate manual bottlenecks and scale without headcount.',
+    features: [
+      { icon: '🤖', title: 'AI Agents', desc: 'Purpose-built agents that reason, plan, and execute tasks autonomously' },
+      { icon: '⚙️', title: 'Workflow Automation', desc: 'End-to-end process automation that adapts and learns over time' },
+      { icon: '🧠', title: 'LLM Integration', desc: 'Embed frontier AI models into your existing tools and pipelines' },
+      { icon: '🔄', title: 'Autonomous Systems', desc: 'Self-monitoring, self-correcting agents with minimal human oversight' },
+    ],
+    deliverables: [
+      'Agent architecture design and scoping',
+      'Workflow mapping and automation blueprint',
+      'AI model selection and fine-tuning',
+      'Agent build, integration, and deployment',
+      'Monitoring dashboards and alerting',
+      'Iterative improvement and ongoing optimization',
+    ],
+  },
 ]
 
 const caseStudies = [
@@ -123,7 +144,7 @@ export default function Services() {
             <span className="gradient-text">Digital Solutions</span>
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            From strategy to execution — NEREON delivers end-to-end transformation across IT advisory, web development, and game production.
+            From strategy to execution — NEREON delivers end-to-end transformation across IT advisory, web development, game production, and agentic AI automation.
           </p>
         </div>
       </section>

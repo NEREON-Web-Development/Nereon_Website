@@ -5,6 +5,7 @@ const serviceOptions = [
   'IT Advisory & Digital Transformation',
   'Web Application Development',
   'Business Website',
+  'Agentic Automation',
   'Serious Game / Simulation',
   'Web3 / Blockchain Gaming',
   'Strategic Consulting',
