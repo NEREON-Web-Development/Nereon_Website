@@ -52,7 +52,7 @@ const projects = [
   },
 ]
 
-const partners = ['Accenture', 'Microsoft', 'AWS Partner', 'Google Cloud', 'Salesforce', 'SAP', 'IBM', 'Oracle', 'Deloitte', 'PwC']
+const techStack = ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'Node.js', 'PostgreSQL', 'Next.js', 'Docker', 'AWS', 'GitHub', 'Vercel', 'Web3.js']
 
 export default function Home() {
   return (
@@ -173,11 +173,11 @@ export default function Home() {
         style={{ backgroundColor: '#080810', borderTop: '1px solid rgba(255,255,255,0.04)', borderBottom: '1px solid rgba(255,255,255,0.04)' }}
       >
         <div className="mb-6 text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-gray-600">Companies that we work with as Nereon</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-gray-600">Technologies We Use</p>
         </div>
         <div className="overflow-hidden">
           <div className="animate-marquee">
-            {[...partners, ...partners].map((name, i) => (
+            {[...techStack, ...techStack].map((name, i) => (
               <div key={i} className="flex-shrink-0 mx-12 text-gray-600 font-semibold text-lg hover:text-gray-400 transition-colors cursor-default">
                 {name}
               </div>

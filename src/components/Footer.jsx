@@ -16,19 +16,6 @@ export default function Footer() {
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
               Building tomorrow's digital experiences — from enterprise IT advisory to immersive games and cutting-edge web applications.
             </p>
-            <div className="flex space-x-4 mt-6">
-              {['Twitter', 'LinkedIn', 'GitHub', 'Discord'].map(social => (
-                <a
-                  key={social}
-                  href="#"
-                  className="w-9 h-9 rounded-lg flex items-center justify-center text-gray-500 hover:text-white transition-all duration-200"
-                  style={{ border: '1px solid rgba(123,47,190,0.2)' }}
-                  aria-label={social}
-                >
-                  <span className="text-xs font-bold">{social[0]}</span>
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Navigation */}
