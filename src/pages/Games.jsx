@@ -1,4 +1,16 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
+import GameCard from '../components/GameCard'
+
+const portfolioGames = [
+  {
+    title: 'DegenGaming',
+    genre: 'Gaming Platform',
+    description: 'A next-generation gaming platform blending competitive play with community-driven experiences. Built for the modern gamer.',
+    emoji: '🎮',
+    accentColor: '#7B2FBE',
+    slug: 'degengaming',
+  },
+]
 
 const serviceTypes = [
   {
@@ -138,6 +150,33 @@ export default function Games() {
             <NavLink to="/contact" className="btn-outline">
               Discuss Your Project
             </NavLink>
+          </div>
+        </div>
+      </section>
+
+      {/* ── OUR GAMES PORTFOLIO ────────────────────────── */}
+      <section className="py-20 px-6" style={{ backgroundColor: '#0C0C14' }}>
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-10">
+            <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#7B2FBE' }}>Portfolio</p>
+            <h2 className="text-4xl font-black text-white mb-4" style={{ fontFamily: 'Syne, sans-serif' }}>Our Games</h2>
+            <p className="text-gray-400 max-w-xl">
+              Products built and operated by NEREON — from standalone platforms to fully launched titles.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {portfolioGames.map(game => (
+              <Link key={game.slug} to={`/games/${game.slug}`} className="block no-underline">
+                <GameCard
+                  title={game.title}
+                  genre={game.genre}
+                  description={game.description}
+                  emoji={game.emoji}
+                  accentColor={game.accentColor}
+                  status="coming-soon"
+                />
+              </Link>
+            ))}
           </div>
         </div>
       </section>

@@ -8,6 +8,7 @@ import Contact from './pages/Contact'
 import CookieConsent from './components/CookieConsent';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import ThankYou from './pages/ThankYou';
+import DegenGaming from './pages/DegenGaming';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/games" element={<Games />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/games/degengaming" element={<DegenGaming />} />
             <Route path="/thank-you" element={<ThankYou />} />
           </Routes>
         </main>
