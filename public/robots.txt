@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /thank-you
+
+# Sitemap
+Sitemap: https://nereon.gr/sitemap.xml

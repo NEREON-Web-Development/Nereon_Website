@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 
 const serviceDetails = [
@@ -120,6 +121,12 @@ const caseStudies = [
 const techStack = ['React', 'Vue.js', 'Node.js', 'TypeScript', 'PostgreSQL', 'MongoDB', 'AWS', 'Docker', 'GraphQL', 'Unity', 'Solidity', 'Redis']
 
 export default function Services() {
+  useEffect(() => {
+    document.title = 'Services | IT Advisory, Web Development, AI Automation & Serious Games — NEREON Greece'
+    document.querySelector('meta[name="description"]')?.setAttribute('content', 'NEREON offers enterprise IT advisory, custom web development, agentic AI automation, and serious games development for businesses across Greece and Rodos.')
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://nereon.gr/services')
+  }, [])
+
   return (
     <div style={{ backgroundColor: '#080810' }}>
       {/* ── HERO ───────────────────────────────────────── */}

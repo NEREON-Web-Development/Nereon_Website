@@ -8,14 +8,30 @@ export default function Footer() {
     <footer style={{ backgroundColor: '#04040A', borderTop: '1px solid rgba(123,47,190,0.15)' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-          {/* Brand */}
+          {/* Brand + NAP */}
           <div className="md:col-span-2">
             <div className="mb-4">
-              <img src={logo} alt="NEREON" style={{ height: '90px', width: 'auto', maxWidth: '300px', objectFit: 'contain' }} />
+              <img src={logo} alt="NEREON — IT Consultancy Greece" style={{ height: '90px', width: 'auto', maxWidth: '300px', objectFit: 'contain' }} />
             </div>
-            <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
+            <p className="text-gray-500 text-sm leading-relaxed max-w-xs mb-4">
               Building tomorrow's digital experiences — from enterprise IT advisory to immersive games and cutting-edge web applications.
             </p>
+            {/* NAP for local SEO */}
+            <address className="not-italic text-gray-600 text-xs leading-relaxed space-y-1">
+              <div itemScope itemType="https://schema.org/Organization">
+                <span itemProp="name" className="sr-only">NEREON</span>
+                <div>
+                  <span itemProp="addressCountry">Greece</span>
+                  {' · '}
+                  <span itemProp="addressRegion">Rodos</span>
+                </div>
+                <div>
+                  <a href="mailto:nereondev@gmail.com" itemProp="email" className="hover:text-gray-400 transition-colors">
+                    nereondev@gmail.com
+                  </a>
+                </div>
+              </div>
+            </address>
           </div>
 
           {/* Navigation */}

@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 
 const features = [
@@ -22,6 +23,12 @@ const features = [
 ]
 
 export default function DegenGaming() {
+  useEffect(() => {
+    document.title = 'DegenGaming | Competitive Gaming Platform by NEREON'
+    document.querySelector('meta[name="description"]')?.setAttribute('content', 'DegenGaming — a next-generation competitive gaming platform by NEREON. Community-driven gaming experiences with ranked modes and tournament brackets.')
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://nereon.gr/games/degengaming')
+  }, [])
+
   return (
     <div style={{ backgroundColor: '#080810' }}>
       {/* ── HERO ───────────────────────────────────────── */}

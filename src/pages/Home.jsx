@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import MasterPrompt from '../components/MasterPrompt'
 
@@ -62,6 +63,12 @@ const projects = [
 const techStack = ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'Node.js', 'PostgreSQL', 'Next.js', 'Docker', 'AWS', 'GitHub', 'Vercel', 'Web3.js']
 
 export default function Home() {
+  useEffect(() => {
+    document.title = 'NEREON | IT Consulting, Web Development & Serious Games — Greece, Rodos'
+    document.querySelector('meta[name="description"]')?.setAttribute('content', 'NEREON is a Greece-based IT consultancy specialising in web development, AI automation, serious games, and enterprise IT advisory. Serving businesses across Greece and Rodos island.')
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://nereon.gr/')
+  }, [])
+
   return (
     <div style={{ backgroundColor: '#080810' }}>
       {/* ── HERO ───────────────────────────────────────── */}

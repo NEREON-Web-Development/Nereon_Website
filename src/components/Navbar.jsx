@@ -31,7 +31,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <NavLink to="/" className="flex items-center">
-            <img src={logo} alt="NEREON" style={{ height: '80px', width: 'auto', maxWidth: '280px', objectFit: 'contain' }} />
+            <img src={logo} alt="NEREON — IT Consultancy Greece" style={{ height: '80px', width: 'auto', maxWidth: '280px', objectFit: 'contain' }} />
           </NavLink>
 
           {/* Desktop nav */}

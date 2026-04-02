@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 
 const serviceOptions = [
@@ -19,6 +19,12 @@ const contactInfo = [
 ]
 
 export default function Contact() {
+  useEffect(() => {
+    document.title = 'Contact NEREON | Start Your IT Project in Greece'
+    document.querySelector('meta[name="description"]')?.setAttribute('content', 'Get in touch with NEREON — Greece-based IT consultancy. Start your web development, AI automation, or serious games project. Response within 24 hours.')
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://nereon.gr/contact')
+  }, [])
+
   const [form, setForm] = useState({
     name: '',
     email: '',

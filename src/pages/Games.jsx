@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import GameCard from '../components/GameCard'
 
@@ -109,6 +110,12 @@ const processSteps = [
 ]
 
 export default function Games() {
+  useEffect(() => {
+    document.title = 'Serious Games & Gaming Studio | NEREON Greece — Enterprise Training Simulations'
+    document.querySelector('meta[name="description"]')?.setAttribute('content', 'NEREON Gaming Studio develops serious games, enterprise training simulations, and Web3 gaming experiences. Based in Greece — custom gamified learning for businesses.')
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://nereon.gr/games')
+  }, [])
+
   return (
     <div style={{ backgroundColor: '#080810' }}>
       {/* ── HERO ───────────────────────────────────────── */}
